@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: false,
+  baseURL: '',
+  assetsPathSVG: '/assets/config/',
+  ruleOfThumb: 'rule-of-thumb.config.json',
 };

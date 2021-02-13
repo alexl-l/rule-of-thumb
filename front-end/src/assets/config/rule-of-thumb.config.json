@@ -1,0 +1,28 @@
+{
+  "config": {
+    "navbar": {
+      "brand": {
+        "position": 0,
+        "routing": "",
+        "text": "Rule of Thumb"
+      },
+      "items": [
+        {
+          "position": 0,
+          "routing": "",
+          "text": "Past Trials"
+        },
+        {
+          "position": 1,
+          "routing": "",
+          "text": "How It Works"
+        },
+        {
+          "position": 2,
+          "routing": "",
+          "text": "Login In / Sing Up"
+        }
+      ]
+    }
+  }
+}
