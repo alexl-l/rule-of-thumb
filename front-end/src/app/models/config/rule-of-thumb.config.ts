@@ -9,10 +9,15 @@ export interface RuleOfThumbAttributes {
 export interface Navbar {
   brand: Item;
   items: Item[];
+  search: Search;
 }
 
 export interface Item {
   position: number;
   routing: string;
   text: string;
+}
+
+export interface Search {
+  icon: string;
 }

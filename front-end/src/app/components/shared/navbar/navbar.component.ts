@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Alert } from '@models/alert/alert';
+import { Navbar } from '@models/config/rule-of-thumb.config';
+import { ConfigService } from '@services/config.service';
+import { UtilService } from '@services/util.service';
 import { NavbarService } from './navbar.service';
 
 // =======================================================================================
@@ -15,6 +19,41 @@ import { NavbarService } from './navbar.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent {
-  constructor(public srv: NavbarService) {}
+export class NavbarComponent implements OnInit {
+  public data: Navbar;
+  public showForm: boolean;
+
+  constructor(private srv: NavbarService, private cnf: ConfigService, private util: UtilService) {
+    this.data = { brand: { position: 0, routing: '', text: '' }, items: [], search: { icon: '' } };
+    this.showForm = false;
+  }
+
+  /**
+   * @description OnInti. Life cycle of angular.
+   * @memberof NavbarComponent
+   */
+  public ngOnInit(): void {
+    this.getConFigFile();
+  }
+
+  /**
+   * @description This function consumes the properties file
+   * @private
+   * @return {*}  {BehaviorSubject<RuleOfThumb>}
+   * @memberof NavbarService
+   */
+  private getConFigFile(): void {
+    this.cnf.getRuleOfThumbFile$().subscribe(
+      (responseConfig) => {
+        if (responseConfig.config.navbar.brand && responseConfig.config.navbar.items) {
+          this.data = this.srv.configureData(responseConfig).config.navbar;
+        } else {
+          this.util.openSnackBar();
+        }
+      },
+      () => {
+        this.util.openSnackBar();
+      }
+    );
+  }
 }

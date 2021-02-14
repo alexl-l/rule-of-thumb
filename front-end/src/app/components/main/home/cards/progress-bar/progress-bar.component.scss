@@ -1,0 +1,31 @@
+$container: '.container-bar';
+$like: '.like-bar';
+$dislike: '.dislike-bar';
+$indicator: '.indicator-bar';
+
+#{$container} {
+  height: 30px;
+  #{$like} {
+    background-color: var(--blueTransparent);
+  }
+  #{$dislike} {
+    background-color: var(--yellowTransparent);
+  }
+  #{$indicator} {
+    margin: auto 0;
+    color: var(--white);
+  }
+  #{$like}::before {
+    background: url('/assets/image/Rectangle 9 copy 17.svg') no-repeat;
+  }
+  #{$dislike}::after {
+    background: url('/assets/image/Rectangle 9 copy 5.svg') no-repeat;
+  }
+  #{$like}::before,
+  #{$dislike}::after {
+    background-position: center;
+    background-size: 20px;
+    content: '';
+    width: 20px;
+  }
+}

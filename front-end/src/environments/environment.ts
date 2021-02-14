@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  baseURL: '',
-  assetsPathSVG: '/assets/config/',
+  baseURL: 'http://demo3418362.mockable.io/',
+  previousRulings: 'getPreviousRulings',
+  assetsPathSVG: '/assets/image/',
+  assetsPathConfig: '/assets/config/',
   ruleOfThumb: 'rule-of-thumb.config.json',
 };
 

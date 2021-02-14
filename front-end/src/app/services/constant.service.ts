@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@environment/environment';
+import { Alert } from '@models/alert/alert';
 
 // =======================================================================================
 // Developed By           : Jhon Alexander López Bohórquez
@@ -17,7 +18,17 @@ export class ConstantService {
 
   public BASE_URL = environment.baseURL;
   public ASSETS_PATH_SVG = environment.assetsPathSVG;
-  public RULE_OF__THUMB_FILE = environment.ruleOfThumb;
+  public ASSETS_PATH_CONFIG = environment.assetsPathConfig;
+  public RULE_OF_THUMB_FILE = environment.ruleOfThumb;
+  public PREVIOUS_RULINGS = environment.previousRulings;
+
+  public DEFAULT_ERROR_MODAL: Alert = {
+    duration: 3000,
+    action: 'CLOSE',
+    horizontalPosition: 'end',
+    verticalPosition: 'top',
+    message: 'Error getting the data',
+  };
 
   constructor() { }
 }

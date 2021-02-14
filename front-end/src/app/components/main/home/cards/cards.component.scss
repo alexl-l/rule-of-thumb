@@ -1,0 +1,48 @@
+$container: '.container-card';
+$image: '.image-card';
+$elements: '.container-elements-card';
+$title: '.title-card';
+$description: '.description-card';
+$options: '.options-card';
+$success: '.success-icon-card';
+$failure: '.failure-icon-card';
+$undefined: '.undefined-icon-card';
+
+#{$container} {
+  background-size: cover;
+  height: 400px;
+  position: relative;
+  #{$image} {
+    width: 100%;
+  }
+  #{$elements} {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+    bottom: 0;
+    position: absolute;
+    #{$title},
+    #{$description},
+    #{$options} {
+      padding-left: 30px;
+    }
+    #{$success}::before {
+      background: url('/assets/image/Rectangle 9 copy 17.svg') var(--blue) no-repeat;
+    }
+    #{$failure}::before {
+      background: url('/assets/image/Rectangle 9 copy 5.svg') var(--yellow) no-repeat;
+    }
+    #{$undefined}::before {
+      background: var(--white) no-repeat;
+    }
+    #{$success}::before,
+    #{$failure}::before,
+    #{$undefined}::before {
+      background-position: center;
+      background-size: 15px;
+      content: '';
+      height: 23px;
+      margin-top: 5px;
+      position: absolute;
+      width: 23px;
+    }
+  }
+}

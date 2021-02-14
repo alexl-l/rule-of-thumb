@@ -1,0 +1,5 @@
+<div class="row" *ngIf="data.previousRulings.length > 0">
+  <div class="col-12 col-md-6" *ngFor="let item of data.previousRulings">
+    <zemoga-cards [data]="item"></zemoga-cards>
+  </div>
+</div>

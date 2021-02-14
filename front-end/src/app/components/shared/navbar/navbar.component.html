@@ -1,25 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#zemogaNavbarToggler"
-    aria-controls="zemogaNavbarToggler"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
+<nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-between navbar-container">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#zemogaNavbarToggler" aria-controls="zemogaNavbarToggler" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" [routerLink]="[srv.data.brand.routing]">{{ srv.data.brand.text }}</a>
-  <div class="collapse navbar-collapse navbar-container" id="zemogaNavbarToggler">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item" *ngFor="let item of srv.data.items">
-        <a class="nav-link" [routerLink]="[item.routing]">{{item.text}}</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="[data.brand.routing]">{{ data.brand.text }}</a>
+    <div class="collapse navbar-collapse navbar-items" id="zemogaNavbarToggler">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item" *ngFor="let item of data.items">
+          <a class="nav-link" [routerLink]="[item.routing]">{{ item.text }}</a>
+        </li>
+      </ul>
+      <button class="navbar-search-button" (click)="showForm = !showForm">
+        <img *ngIf="data.search.icon" [src]="data.search.icon | assetsPath" alt="Search" />
+      </button>
+      <form class="form-inline my-2 my-lg-0" *ngIf="showForm">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
   </div>
 </nav>

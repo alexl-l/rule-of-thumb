@@ -6,6 +6,9 @@
         "routing": "",
         "text": "Rule of Thumb"
       },
+      "search": {
+        "icon": "Composite Path.svg"
+      },
       "items": [
         {
           "position": 0,

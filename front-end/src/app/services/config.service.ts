@@ -18,7 +18,7 @@ import { HandleErrorService } from './handle-error.service';
   providedIn: 'root',
 })
 export class ConfigService {
-  constructor(private httpClient: HttpClient, private constant: ConstantService, private error: HandleErrorService) {}
+  constructor(private httpClient: HttpClient, private cnt: ConstantService, private error: HandleErrorService) {}
 
   /**
    * @description Observable to consume the rule of thumb file.
@@ -26,6 +26,6 @@ export class ConfigService {
    * @memberof ConfigService
    */
   public getRuleOfThumbFile$(): Observable<RuleOfThumb> {
-    return this.httpClient.get<RuleOfThumb>(this.constant.ASSETS_PATH_SVG + this.constant.RULE_OF__THUMB_FILE);
+    return this.httpClient.get<RuleOfThumb>(this.cnt.ASSETS_PATH_CONFIG + this.cnt.RULE_OF_THUMB_FILE);
   }
 }
