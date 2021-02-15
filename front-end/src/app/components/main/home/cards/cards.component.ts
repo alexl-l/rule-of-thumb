@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PreviousRulingsAttributes } from '@models/rest/previous-rulings';
 
 // =======================================================================================
@@ -17,10 +17,19 @@ import { PreviousRulingsAttributes } from '@models/rest/previous-rulings';
 })
 export class CardsComponent implements OnInit {
   @Input() data: PreviousRulingsAttributes;
+  @Output() changeValue = new EventEmitter<PreviousRulingsAttributes>();
 
   constructor() {
-    this.data = { description: '', detail: { career: '', time: '' }, name: '', picture: '', votes: { dislike: 0, like: 0, myVote: 2 } };
+    this.data = { id: 0, description: '', detail: { career: '', time: '' }, name: '', daysLeft: 0, overview: '', link: '', picture: '', votes: { dislike: 0, like: 0, myVote: 2 } };
   }
 
   ngOnInit(): void {}
+
+  /**
+   * @description This function issues the information to vote.
+   * @memberof CardsComponent
+   */
+  public emitEvent(): void {
+    this.changeValue.emit(this.data);
+  }
 }

@@ -7,13 +7,18 @@ $indicator: '.indicator-bar';
   height: 30px;
   #{$like} {
     background-color: var(--blueTransparent);
+    padding-left: 10px;
   }
   #{$dislike} {
+    padding-right: 10px;
     background-color: var(--yellowTransparent);
   }
   #{$indicator} {
+    font-size: 20px;
     margin: auto 0;
+    font-weight: 300;
     color: var(--white);
+    padding: 0 10px;
   }
   #{$like}::before {
     background: url('/assets/image/Rectangle 9 copy 17.svg') no-repeat;

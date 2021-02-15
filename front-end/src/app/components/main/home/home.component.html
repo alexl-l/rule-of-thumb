@@ -1,5 +1,31 @@
-<div class="row" *ngIf="data.previousRulings.length > 0">
-  <div class="col-12 col-md-6" *ngFor="let item of data.previousRulings">
-    <zemoga-cards [data]="item"></zemoga-cards>
+<div class="container-fluid p-0 mb-3">
+  <zemoga-votes [parametricData]="parametricData" [data]="data.currentRulings[0]"></zemoga-votes>
+</div>
+<div class="container">
+  <div class="row h-100" *ngIf="message">
+    <div class="col my-auto">
+      <div class="container-home">
+        <div class="d-flex justify-content-between">
+          <div class="title-container-alert-home">
+            <p class="title-light-alert-home">{{ parametricData.alert.title }}</p>
+            <p class="title-bold-alert-home">{{ parametricData.alert.subtitle }}</p>
+          </div>
+          <div class="description-container-alert-home">
+            <p class="description-alert-home">{{ parametricData.alert.description }}</p>
+          </div>
+          <div class="button-container-alert-home">
+            <button class="button-alert-home" (click)="hideAlert()">x</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3" *ngIf="data.previousRulings.length > 0">
+    <div class="col-12 mb-3">
+      <h1 class="main-title-rulings">{{ parametricData.title }}</h1>
+    </div>
+    <div class="col-12 col-md-6 mb-4" *ngFor="let item of data.previousRulings">
+      <zemoga-cards [data]="item" (changeValue)="changeValue($event)"></zemoga-cards>
+    </div>
   </div>
 </div>

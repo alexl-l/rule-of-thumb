@@ -1,0 +1,36 @@
+<div class="container-votes" *ngIf="data && data.picture" [ngStyle]="{ 'background-image': 'url(\'' + data.picture + '\')' }">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 my-auto">
+        <div class="card-votes">
+          <div class="my-auto">
+            <div class="container-description-votes">
+              <span>{{ parametricData.votes.title }}</span>
+              <h1 class="title-vote">{{ data.name }}?</h1>
+              <p class="description-vote">{{ data.overview }}</p>
+              <a [href]="data.link" class="anchor-vote"><img class="icon-anchor-vote" [src]="parametricData.votes.icon | assetsPath" alt="icon" />{{ parametricData.votes.detailLink }}</a>
+              <p class="verdict-vote">{{ parametricData.votes.question }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between container-buttons-votes">
+          <button class="verdict-button-votes like-vote"><img class="image-button-vote" [src]="'Rectangle 9 copy 17.svg' | assetsPath" alt="" /></button>
+          <button class="verdict-button-votes dislike-vote"><img class="image-button-vote" [src]="'Rectangle 9 copy 5.svg' | assetsPath" alt="" /></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="time-container-votes">
+    <div class="d-flex justify-content-between h-100">
+      <div class="time-message-votes">
+        <span class="message-vote">{{ parametricData.votes.detailClose }}</span>
+      </div>
+      <div class="time-days">
+        <div class="time-vote">
+          <span><strong>{{ data.daysLeft }} </strong>{{ parametricData.votes.time }}</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

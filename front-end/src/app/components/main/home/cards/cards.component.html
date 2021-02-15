@@ -4,11 +4,11 @@
       <h1 class="title-card">{{ data.name }}</h1>
     </div>
     <p class="description-card">{{ data.description }}</p>
-    <div class="d-flex justify-content-between options-card">
-      <button>View Full Report</button>
-      <div class="datil-card">
-        <span>{{ data.detail.time }}</span>
-        <span>{{ data.detail.career }}</span>
+    <div class="d-flex justify-content-between options-card mb-3">
+      <button class="description-button" (click)="emitEvent()">View Full Report</button>
+      <div class="detail-card">
+        <p class="m-0">{{ data.detail.time }}</p>
+        <p class="m-0">{{ data.detail.career }}</p>
       </div>
     </div>
     <zemoga-progress-bar [data]="data.votes"></zemoga-progress-bar>

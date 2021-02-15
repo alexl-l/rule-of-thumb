@@ -27,6 +27,15 @@ export class ProgressBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.calculateAverage();
+  }
+
+  /**
+   * @description This function calculates the percentage of likes and dislikes
+   * @private
+   * @memberof ProgressBarComponent
+   */
+  private calculateAverage(): void {
     this.dislike = (this.data.dislike * 100) / (this.data.dislike + this.data.like);
     this.like = (this.data.like * 100) / (this.data.dislike + this.data.like);
   }

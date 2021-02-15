@@ -3,7 +3,7 @@
     "navbar": {
       "brand": {
         "position": 0,
-        "routing": "",
+        "routing": "home",
         "text": "Rule of Thumb"
       },
       "search": {
@@ -12,20 +12,36 @@
       "items": [
         {
           "position": 0,
-          "routing": "",
+          "routing": "trials",
           "text": "Past Trials"
         },
         {
           "position": 1,
-          "routing": "",
+          "routing": "how-it-works",
           "text": "How It Works"
         },
         {
           "position": 2,
-          "routing": "",
+          "routing": "login",
           "text": "Login In / Sing Up"
         }
       ]
+    },
+    "rulings": {
+      "votes": {
+        "title": "What's your opinion?",
+        "question": "What's your Verdict?",
+        "icon": "Wiki.svg",
+        "detailLink": "More information",
+        "detailClose": "CLOSING IN",
+        "time": "days"
+      },
+      "alert": {
+        "title": "Speak out.",
+        "subtitle": "Be counted",
+        "description": "Rule of Thumb is a crowd sourced court of public opinion where anyone and everyone can speak out and speak freely. It’s easy: You share your opinion, we analyze and put the data in a public report."
+      },
+      "title": "Previous Rulings"
     }
   }
 }
