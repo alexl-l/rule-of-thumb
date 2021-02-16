@@ -1,9 +1,13 @@
+export interface RulingData {
+  success: string;
+  data: PreviousRulingsAttributes[];
+}
 export interface PreviousRulings {
   currentRulings: PreviousRulingsAttributes[];
   previousRulings: PreviousRulingsAttributes[];
 }
 export interface PreviousRulingsAttributes {
-  id: number;
+  _id: number;
   name: string;
   picture: string;
   description: string;
@@ -14,11 +18,15 @@ export interface PreviousRulingsAttributes {
   daysLeft: number;
 }
 export interface Detail {
-  time: string;
+  time: number;
   career: string;
 }
 export interface Votes {
   like: number;
   dislike: number;
-  myVote: number;
+}
+
+export interface RulingDataPut {
+  success: boolean;
+  data: PreviousRulingsAttributes;
 }

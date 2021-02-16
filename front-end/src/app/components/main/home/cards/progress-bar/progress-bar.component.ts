@@ -21,7 +21,7 @@ export class ProgressBarComponent implements OnInit {
   @Input() data: Votes;
 
   constructor() {
-    this.data = { dislike: 0, like: 0, myVote: 2 };
+    this.data = { dislike: 0, like: 0 };
     this.like = 0;
     this.dislike = 0;
   }
@@ -36,7 +36,7 @@ export class ProgressBarComponent implements OnInit {
    * @memberof ProgressBarComponent
    */
   private calculateAverage(): void {
-    this.dislike = (this.data.dislike * 100) / (this.data.dislike + this.data.like);
-    this.like = (this.data.like * 100) / (this.data.dislike + this.data.like);
+    this.dislike = Math.ceil((this.data.dislike * 100) / (this.data.dislike + this.data.like));
+    this.like = Math.ceil((this.data.like * 100) / (this.data.dislike + this.data.like));
   }
 }

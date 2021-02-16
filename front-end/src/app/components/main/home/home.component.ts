@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Alert } from '@models/alert/alert';
-import { Rulings } from '@models/config/rule-of-thumb.config';
+import { Footer, Rulings } from '@models/config/rule-of-thumb.config';
 import { PreviousRulings, PreviousRulingsAttributes } from '@models/rest/previous-rulings';
 import { ConfigService } from '@services/config.service';
 import { RestService } from '@services/rest.service';
 import { UtilService } from '@services/util.service';
+import { HomeService } from './home.service';
 
 // =======================================================================================
 // Developed By           : Jhon Alexander López Bohórquez
@@ -23,12 +24,16 @@ import { UtilService } from '@services/util.service';
 export class HomeComponent implements OnInit {
   public data: PreviousRulings;
   public parametricData: Rulings;
+  public footer: Footer;
   public message: boolean;
+  public showSpinner: boolean;
 
-  constructor(private rest: RestService, private util: UtilService, private cnf: ConfigService) {
+  constructor(private rest: RestService, private util: UtilService, private cnf: ConfigService, private srv: HomeService) {
     this.data = { previousRulings: [], currentRulings: [] };
     this.parametricData = { alert: { description: '', subtitle: '', title: '' }, title: '', votes: { icon: '', question: '', title: '', detailClose: '', detailLink: '', time: '' } };
+    this.footer = {button: '', title: ''};
     this.message = true;
+    this.showSpinner = true;
   }
 
   ngOnInit(): void {
@@ -44,11 +49,15 @@ export class HomeComponent implements OnInit {
   private getPreviousRulings(): void {
     this.rest.getPreviousRulings$().subscribe(
       (responsePreviousRulings) => {
-        this.data = responsePreviousRulings;
+        if (responsePreviousRulings.success && responsePreviousRulings.data.length > 0) {
+          this.data = this.srv.configData(responsePreviousRulings.data);
+        }
+        this.showSpinner = false;
       },
       () => {
         const dataAlert: Alert = { action: 'CLOSE', duration: 3000, horizontalPosition: 'end', verticalPosition: 'top', message: 'Error consulting previous rulings' };
         this.util.openSnackBar(dataAlert);
+        this.showSpinner = false;
       }
     );
   }
@@ -63,6 +72,7 @@ export class HomeComponent implements OnInit {
       (responseConfig) => {
         if (responseConfig.config.rulings) {
           this.parametricData = responseConfig.config.rulings;
+          this.footer =  responseConfig.config.footer;
         } else {
           this.util.openSnackBar();
         }
@@ -87,13 +97,7 @@ export class HomeComponent implements OnInit {
    * @memberof HomeComponent
    */
   public changeValue(event: PreviousRulingsAttributes): void {
-    const index = this.data.previousRulings
-      .map((item) => {
-        return item.id;
-      })
-      .indexOf(event.id);
-    this.data.previousRulings.splice(index, 1);
-    this.data.previousRulings.unshift(this.data.currentRulings[0]);
+    this.data.previousRulings = this.srv.changeData(event, this.data);
     this.data.currentRulings[0] = event;
     window.scroll(0, 0);
   }

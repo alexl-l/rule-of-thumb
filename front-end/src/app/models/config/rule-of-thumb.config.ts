@@ -5,6 +5,7 @@ export interface RuleOfThumb {
 export interface RuleOfThumbAttributes {
   navbar: Navbar;
   rulings: Rulings;
+  footer: Footer;
 }
 export interface Navbar {
   brand: Item;
@@ -36,4 +37,8 @@ export interface Alert {
   title: string;
   subtitle: string;
   description: string;
+}
+export interface Footer {
+  title: string;
+  button: string;
 }
