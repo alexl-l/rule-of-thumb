@@ -1,0 +1,63 @@
+$container: '.container-home';
+$container-title: '.title-container-alert-home';
+$container-description: '.description-container-alert-home';
+$container-button: '.button-container-alert-home';
+$light-title: '.title-light-alert-home';
+$bold-title: '.title-bold-alert-home';
+$description: '.description-alert-home';
+$button: '.button-alert-home';
+$title: '.main-title-rulings';
+
+#{$container} {
+  padding: 20px;
+  margin: 10px 0;
+  background-color: var(--grayBackground);
+  #{$container-title} {
+    width: 20%;
+    margin: auto;
+    line-height: 1;
+    #{$light-title} {
+      font-size: 25px;
+      font-weight: 400;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    #{$bold-title} {
+      font-size: 30px;
+      font-weight: 800;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+  #{$container-description} {
+    width: 75%;
+    margin: auto;
+    #{$description} {
+      margin: 0;
+    }
+  }
+  #{$container-button} {
+    margin: auto;
+    width: 5%;
+    text-align: end;
+    #{$button},
+    #{$button}:focus {
+      background: none;
+      outline: none;
+      border: none;
+    }
+    #{$button} {
+      font-size: 25px;
+      font-weight: 500;
+      color: var(--gray);
+    }
+  }
+}
+#{$bold-title} {
+  font-size: 30px;
+  font-weight: 400;
+}
+#{$title} {
+  font-size: 30px;
+  font-weight: 300;
+}
