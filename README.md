@@ -1,7 +1,3 @@
-# rule-of-thumb
-Zemoga challenge
-
-
 # ALERT
 The [front-end](https://rule-of-thumb.mybluemix.net/) was deployed on the IBM Cloud. The new URL is this: https://rule-of-thumb.mybluemix.net/
 # Zemoga Challenge
