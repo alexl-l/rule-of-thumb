@@ -5,9 +5,20 @@ $container-button: '.button-container-alert-home';
 $light-title: '.title-light-alert-home';
 $bold-title: '.title-bold-alert-home';
 $description: '.description-alert-home';
+$footer-description: '.description-footer-home';
 $button: '.button-alert-home';
+$footer-button: '.button-footer-home';
 $title: '.main-title-rulings';
+$container-spinner: '.container-spinner';
 
+#{$container-spinner} {
+  position: fixed;
+  overflow: hidden;
+  background-color: var(--grayBackground);
+  z-index: 1;
+  top: 0;
+  height: 100vh;
+}
 #{$container} {
   padding: 20px;
   margin: 10px 0;
@@ -52,6 +63,26 @@ $title: '.main-title-rulings';
       color: var(--gray);
     }
   }
+}
+#{$footer-button},
+#{$footer-button}:focus {
+  background: none;
+  outline: none;
+  border: none;
+}
+#{$footer-description} {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: var(--gray);
+}
+#{$footer-button} {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--gray);
+  border: solid 2px var(--gray);
 }
 #{$bold-title} {
   font-size: 30px;

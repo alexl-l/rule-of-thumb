@@ -28,4 +28,25 @@
       <zemoga-cards [data]="item" (changeValue)="changeValue($event)"></zemoga-cards>
     </div>
   </div>
+  <div class="row h-100">
+    <div class="col my-auto">
+      <div class="container-home">
+        <div class="d-flex justify-content-between">
+          <div class="description-container-footer-home">
+            <p class="description-footer-home">{{ footer.title }}</p>
+          </div>
+          <div class="button-container-footer-home">
+            <button class="button-footer-home">{{ footer.button }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid p-0 container-spinner" *ngIf="showSpinner">
+  <div class="row h-100">
+    <div class="col text-center my-auto">
+      <zemoga-spinner></zemoga-spinner>
+    </div>
+  </div>
 </div>

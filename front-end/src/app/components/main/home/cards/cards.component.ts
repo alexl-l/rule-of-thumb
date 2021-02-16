@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { PreviousRulingsAttributes } from '@models/rest/previous-rulings';
 
 // =======================================================================================
@@ -15,15 +15,21 @@ import { PreviousRulingsAttributes } from '@models/rest/previous-rulings';
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.scss'],
 })
-export class CardsComponent implements OnInit {
+export class CardsComponent implements OnChanges {
   @Input() data: PreviousRulingsAttributes;
   @Output() changeValue = new EventEmitter<PreviousRulingsAttributes>();
+  public likeOrDislike: boolean;
 
   constructor() {
-    this.data = { id: 0, description: '', detail: { career: '', time: '' }, name: '', daysLeft: 0, overview: '', link: '', picture: '', votes: { dislike: 0, like: 0, myVote: 2 } };
+    this.likeOrDislike = false;
+    this.data = { _id: 0, description: '', detail: { career: '', time: 0 }, name: '', daysLeft: 0, overview: '', link: '', picture: '', votes: { dislike: 0, like: 0 } };
   }
 
-  ngOnInit(): void {}
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.data.currentValue) {
+      this.likeOrDislike = this.data.votes.like >= this.data.votes.dislike;
+    }
+  }
 
   /**
    * @description This function issues the information to vote.

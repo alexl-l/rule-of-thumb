@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PreviousRulings } from '@models/rest/previous-rulings';
+import { PreviousRulingsAttributes, RulingData, RulingDataPut } from '@models/rest/previous-rulings';
 import { Observable } from 'rxjs';
 import { ConstantService } from './constant.service';
 
@@ -14,13 +14,21 @@ import { ConstantService } from './constant.service';
 // =======================================================================================
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RestService {
+  constructor(private httpClient: HttpClient, private cnt: ConstantService) {}
 
-  constructor(private httpClient: HttpClient, private cnt: ConstantService) { }
+  /**
+   * @description This function does the consumption of the API to fetch the list of rulings
+   * @return {*}  {Observable<RulingData>}
+   * @memberof RestService
+   */
+  public getPreviousRulings$(): Observable<RulingData> {
+    return this.httpClient.get<RulingData>(this.cnt.BASE_URL + this.cnt.PREVIOUS_RULINGS);
+  }
 
-  public getPreviousRulings$(): Observable<PreviousRulings> {
-    return this.httpClient.get<PreviousRulings>(this.cnt.BASE_URL + this.cnt.PREVIOUS_RULINGS);
+  public putVotesRulings$(data: PreviousRulingsAttributes): Observable<RulingDataPut> {
+    return this.httpClient.put<RulingDataPut>(`${this.cnt.BASE_URL}${this.cnt.PREVIOUS_RULINGS}/${data._id}`, {votes: data}.votes);
   }
 }
