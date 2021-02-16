@@ -29,6 +29,6 @@ export class RestService {
   }
 
   public putVotesRulings$(data: PreviousRulingsAttributes): Observable<RulingDataPut> {
-    return this.httpClient.put<RulingDataPut>(`${this.cnt.BASE_URL}${this.cnt.PREVIOUS_RULINGS}/${data._id}`, {votes: data}.votes);
+    return this.httpClient.put<RulingDataPut>(`${this.cnt.BASE_URL}${this.cnt.PREVIOUS_RULINGS}/${data._id}`, { votes: data.votes });
   }
 }
